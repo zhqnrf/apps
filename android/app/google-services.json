@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "448813136954",
+    "project_id": "fir-getx-app-18f6a",
+    "storage_bucket": "fir-getx-app-18f6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448813136954:android:6d70636a8a5cfbb367c903",
+        "android_client_info": {
+          "package_name": "com.getx.login.db.firebaseLogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448813136954-tm1qv6p1692ma3fq0oe87crq1n2h1bun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWVRoJ4A0MhCUUj_ZqjF2JGJbMHM-o69I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448813136954-tm1qv6p1692ma3fq0oe87crq1n2h1bun.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "448813136954-6cmvl10sd3i3bun63hkjnscithigjvp8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.getx.login.db.firebaseLogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
