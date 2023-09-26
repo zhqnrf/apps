@@ -1,0 +1,306 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+HttpException: HttpException: Connection closed before full header was received, uri = http://localhost:50946/devtools/page/94586B5016A949DE43E9F50BB594A0A2
+
+```
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter
+  (Channel
+  stable,
+  3.13.2, on
+  Microsoft
+  Windows
+  [Version
+  10.0.22621
+  .2134],
+  locale
+  en-ID)
+  [32m•[39m Flutter
+  version
+  3.13.2 on
+  channel
+  stable at
+  D:\dev\flu
+  tter
+  [32m•[39m Upstream
+  repository
+  https://gi
+  thub.com/f
+  lutter/flu
+  tter.git
+  [32m•
+  [39m Framework
+  revision
+  ff5b5b5fa6
+  (13 days
+  ago),
+  2023-08-24
+  08:12:28
+  -0500
+  [32m•[39m Engine
+  revision
+  b20183e040
+  [32m•[39m Dart
+  version
+  3.1.0
+  [32m•[39m DevTools
+  version
+  2.25.0
+
+[32m[✓][39m Windows
+  Version
+  (Installed
+  version of
+  Windows is
+  version 10
+  or higher)
+
+[32m[✓][39m Android
+  toolchain
+  - develop
+  for
+  Android
+  devices
+  (Android
+  SDK
+  version
+  34.0.0)
+  [32m•[39m Android
+  SDK at
+  D:\dev\sdk
+  [32m•[39m Platform
+  android-34
+  ,
+  build-tool
+  s 34.0.0
+  [32m•[39m Java
+  binary at:
+  C:\Program
+  Files\Andr
+  oid\Androi
+  d
+  Studio\jbr
+  \bin\java
+  [32m•[39m Java
+  version
+  OpenJDK
+  Runtime
+  Environmen
+  t (build
+  17.0.6+0-b
+  2043.56-10
+  027231)
+  [32m•[39m All
+  Android
+  licenses
+  accepted.
+
+[32m[✓][39m Chrome -
+  develop
+  for the
+  web
+  [32m•[39m Chrome
+  at
+  C:\Program
+  Files
+  (x86)\Goog
+  le\Chrome\
+  Applicatio
+  n\chrome.e
+  xe
+
+[33m[!][39m Visual
+  Studio -
+  develop
+  Windows
+  apps
+  (Visual
+  Studio
+  Community
+  2022
+  17.7.3)
+  [32m•[39m Visual
+  Studio at
+  C:\Program
+  Files\Micr
+  osoft
+  Visual
+  Studio\202
+  2\Communit
+  y
+  [32m•[39m Visual
+  Studio
+  Community
+  2022
+  version
+  17.7.34024
+  .191
+  [31m✗[39m Visual
+  Studio is
+  missing
+  necessary
+  components
+  . Please
+  re-run the
+  Visual
+  Studio
+  installer
+  for the
+  "Desktop
+  developmen
+  t with
+  C++"
+  workload,
+  and
+  include
+  these
+  components
+  :
+  MSVC v142
+  - VS 2019
+  C++
+  x64/x86
+  build
+  tools
+  - If there
+  are
+  multiple
+  build tool
+  versions
+  available,
+  install
+  the latest
+  C++ CMake
+  tools for
+  Windows
+  Windows 10
+  SDK
+
+[32m[✓][39m Android
+  Studio
+  (version
+  2022.3)
+  [32m•[39m Android
+  Studio at
+  C:\Program
+  Files\Andr
+  oid\Androi
+  d Studio
+  [32m•[39m Flutter
+  plugin can
+  be
+  installed
+  from:
+  🔨
+  https://pl
+  ugins.jetb
+  rains.com/
+  plugin/921
+  2-flutter
+  [32m•[39m Dart
+  plugin can
+  be
+  installed
+  from:
+  🔨
+  https://pl
+  ugins.jetb
+  rains.com/
+  plugin/635
+  1-dart
+  [32m•
+
+  android-st
+  udio-dir =
+  C:\Program
+  Files\Andr
+  oid\Androi
+  d Studio
+  [32m•[39m Java
+  version
+  OpenJDK
+  Runtime
+  Environmen
+  t (build
+  17.0.6+0-b
+  2043.56-10
+  027231)
+
+[32m[✓][39m VS Code
+  (version
+  1.81.1)
+  [32m•[39m VS Code
+  at
+  C:\Users\H
+  P\AppData\
+  Local\Prog
+  rams\Micro
+  soft VS
+  Code
+  [32m•[39m Flutter
+  extension
+  version
+  3.72.0
+
+[32m[✓]
+  [39m Connected
+  device (3
+  available)
+  [32m•[39m Windows
+  (desktop)
+  • windows
+  •
+  windows-x6
+  4    •
+  Microsoft
+  Windows
+  [Version
+  10.0.22621
+  .2134]
+  [32m•[39m Chrome
+  (web)
+  • chrome
+  •
+  web-javasc
+  ript •
+  Google
+  Chrome
+  116.0.5845
+  .141
+  [32m•[39m Edge
+  (web)
+  • edge
+  •
+  web-javasc
+  ript •
+  Microsoft
+  Edge
+  116.0.1938
+  .69
+
+[32m[✓][39m Network
+  resources
+  [32m•[39m All
+  expected
+  network
+  resources
+  are
+  available.
+
+[33m![39m Doctor
+  found
+  issues in
+  1
+  category.
+```
