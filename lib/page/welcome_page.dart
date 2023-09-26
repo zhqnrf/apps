@@ -79,14 +79,14 @@ class WelcomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Welcome",
+                  "I'll Go Out",
                   style: TextStyle(
-                      fontSize: 36,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.black54),
                 ),
                 Text(
-                  "User",
+                  "Are you sure?",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.grey[500],

@@ -1,14 +1,16 @@
+import 'package:cdc_app/profil/settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_login/control/auth_controller.dart';
-import 'package:firebase_login/otp/otp_form.dart';
+import 'package:cdc_app/control/auth_controller.dart';
+import 'package:cdc_app/otp/otp_form.dart';
 import 'package:flutter/gestures.dart';
+import 'package:cdc_app/profil/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart ' as http;
 
 // import 'form_container_widget.dart';
 
-import 'package:firebase_login/users/login_page.dart';
+import 'package:cdc_app/users/login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -19,35 +21,50 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
-  TextEditingController _nameController = TextEditingController();
+  TextEditingController _fullnameController = TextEditingController();
+  TextEditingController _ttlController = TextEditingController();
   TextEditingController _nikController = TextEditingController();
-  // TextEditingController _phoneController = TextEditingController();
+  TextEditingController _alamatController = TextEditingController();
+  TextEditingController _levelController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
+  TextEditingController _teleponController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
   User? user;
   String verificationID = "";
 
   Future<void> insertrecord() async {
-    if (_nameController.text != "" ||
+    if (_fullnameController.text != "" ||
+        _ttlController != " " ||
         _nikController.text != " " ||
+        _alamatController != " " ||
         _emailController != " " ||
+        _teleponController != " " ||
+        _levelController != " " ||
         _passwordController.text != "") {
       try {
-        String uri = "http://10.0.2.2/login_mysql/insert_record.php";
+        String uri = "http://10.10.2.245/cdc/insert_register.php";
         var res = await http.post(Uri.parse(uri), body: {
-          "name": _nameController.text,
+          "fullname": _fullnameController.text,
+          "ttl": _ttlController.text,
           "nik": _nikController.text,
+          "alamat": _alamatController.text,
           "email": _emailController.text,
-          "password": _passwordController.text
+          "telepon": _teleponController.text,
+          "password": _passwordController.text,
+          "level": _levelController.text
         });
         var response = jsonDecode(res.body);
         if (response["succes"] == "true") {
           print("Record Inserted");
-          _nameController.text = '';
+          _fullnameController.text = '';
+          _ttlController.text = '';
           _nikController.text = '';
+          _alamatController.text = '';
           _emailController.text = '';
+          _teleponController.text = '';
           _passwordController.text = '';
+          _levelController.text = '';
         } else {
           print("Some Error Expected");
         }
@@ -61,9 +78,17 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
+    _fullnameController.dispose();
+    _ttlController.dispose();
     _nikController.dispose();
+    _alamatController.dispose();
     _emailController.dispose();
+    _teleponController.dispose();
     _passwordController.dispose();
+    _levelController.dispose();
+    // _nikController.dispose();
+    // _emailController.dispose();
+    // _passwordController.dispose();
     super.dispose();
   }
 
@@ -146,7 +171,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   color: Colors.grey.withOpacity(0.2))
                             ]),
                         child: TextField(
-                          controller: _nameController,
+                          controller: _fullnameController,
                           decoration: InputDecoration(
                               hintText: "Your Name",
                               prefixIcon: Icon(Icons.perm_identity,
@@ -177,11 +202,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                   color: Colors.grey.withOpacity(0.2))
                             ]),
                         child: TextField(
-                          controller: _emailController,
+                          controller: _ttlController,
                           decoration: InputDecoration(
-                              hintText: "Your Email",
-                              prefixIcon:
-                                  Icon(Icons.email, color: Colors.blueAccent),
+                              hintText: "Place and Date Birth",
+                              prefixIcon: Icon(Icons.date_range_rounded,
+                                  color: Colors.blueAccent),
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30),
                                   borderSide: BorderSide(
@@ -196,46 +221,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: 15,
                     ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //       color: Colors.white,
-                    //       borderRadius: BorderRadius.circular(30),
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //             blurRadius: 10,
-                    //             spreadRadius: 7,
-                    //             offset: Offset(1, 1),
-                    //             color: Colors.grey.withOpacity(0.2))
-                    //       ]),
-                    //   child: TextField(
-                    //     controller: _phoneController,
-                    //     decoration: InputDecoration(
-                    //       hintText: "Your Phone",
-
-                    //       prefixIcon:
-                    //           Icon(Icons.phone, color: Colors.blueAccent),
-                    //       prefixText: "+62 ",
-                    //       focusedBorder: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.circular(30),
-                    //         borderSide:
-                    //             BorderSide(color: Colors.white, width: 1.0),
-                    //       ),
-                    //       enabledBorder: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.circular(30),
-                    //         borderSide:
-                    //             BorderSide(color: Colors.white, width: 1.0),
-                    //       ),
-                    //       border: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.circular(30),
-                    //       ),
-                    //       counterText:
-                    //           "", // Untuk menyembunyikan jumlah karakter yang tersisa
-                    //     ),
-                    //     keyboardType: TextInputType.phone,
-                    //     maxLength: 11, // Tempatkan max length di sini
-                    //   ),
-                    // ),
-
                     Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -264,21 +249,142 @@ class _SignUpPageState extends State<SignUpPage> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30))),
                         )),
-
-                    // Row(
-                    //   children: [
-                    //     Expanded(
-                    //       child: Container(),
-                    //     ),
-                    //     Text(
-                    //       "Forgot Password?",
-                    //       style: TextStyle(fontSize: 10, color: Colors.grey[500]),
-                    //     )
-                    //   ],
-                    // ),
                   ],
                 ),
               ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10,
+                            spreadRadius: 7,
+                            offset: Offset(1, 1),
+                            color: Colors.grey.withOpacity(0.2))
+                      ]),
+                  child: TextField(
+                    controller: _alamatController,
+                    decoration: InputDecoration(
+                        hintText: "Your Place",
+                        prefixIcon: Icon(Icons.place, color: Colors.blueAccent),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 1.0)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 1.0)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10,
+                            spreadRadius: 7,
+                            offset: Offset(1, 1),
+                            color: Colors.grey.withOpacity(0.2))
+                      ]),
+                  child: TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                        hintText: "Your Email",
+                        prefixIcon: Icon(Icons.email, color: Colors.blueAccent),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 1.0)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 1.0)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //       color: Colors.white,
+              //       borderRadius: BorderRadius.circular(30),
+              //       boxShadow: [
+              //         BoxShadow(
+              //             blurRadius: 10,
+              //             spreadRadius: 7,
+              //             offset: Offset(1, 1),
+              //             color: Colors.grey.withOpacity(0.2))
+              //       ]),
+              //   child: TextField(
+              //     controller: _phoneController,
+              //     decoration: InputDecoration(
+              //       hintText: "Your Phone",
+
+              //       prefixIcon:
+              //           Icon(Icons.phone, color: Colors.blueAccent),
+              //       prefixText: "+62 ",
+              //       focusedBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //         borderSide:
+              //             BorderSide(color: Colors.white, width: 1.0),
+              //       ),
+              //       enabledBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //         borderSide:
+              //             BorderSide(color: Colors.white, width: 1.0),
+              //       ),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //       ),
+              //       counterText:
+              //           "", // Untuk menyembunyikan jumlah karakter yang tersisa
+              //     ),
+              //     keyboardType: TextInputType.phone,
+              //     maxLength: 11, // Tempatkan max length di sini
+              //   ),
+              // ),
+              Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10,
+                            spreadRadius: 7,
+                            offset: Offset(1, 1),
+                            color: Colors.grey.withOpacity(0.2))
+                      ]),
+                  child: TextField(
+                    controller: _teleponController,
+                    decoration: InputDecoration(
+                        hintText: "Your Telepon",
+                        prefixIcon: Icon(Icons.phone, color: Colors.blueAccent),
+                        prefixText: '+62 ',
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 1.0)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 1.0)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                  )),
               SizedBox(
                 height: 15,
               ),
@@ -312,22 +418,63 @@ class _SignUpPageState extends State<SignUpPage> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30))),
                   )),
+
               SizedBox(
-                height: 25,
+                height: 15,
+              ),
+
+              Container(
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 10,
+                      spreadRadius: 7,
+                      offset: Offset(1, 1),
+                      color: Colors.grey.withOpacity(0.2),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  controller: _levelController,
+                  decoration: InputDecoration(
+                    hintText: "Level",
+                    prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
               ),
               //   FirebaseAuth.instance.checkActionCode(
               //       _emailController.text.trim(),
               //       _nikController.text.trim(),
               //       _passwordController.text.trim());
               // },
+
+              SizedBox(
+                height: 15,
+              ),
               MaterialButton(
-                onPressed: () {
+                onPressed: () async {
                   _signUp();
                   insertrecord();
-                  Navigator.push(
-                    context,
+
+                  // Navigasi ke halaman OTPForm sambil mengirim nilai _teleponController
+                  await Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
+                      builder: (context) =>
+                          OTPForm(telepon: _teleponController.text),
                     ),
                   );
                 }, // Warna latar belakang tombol
@@ -357,28 +504,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
 
-// child: Container(
-              //   width: w * 0.5,
-              //   height: h * 0.08,
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(30),
-              //     image: DecorationImage(
-              //       image: AssetImage("img/loginbtn.png"),
-              //       fit: BoxFit.cover,
-              //     ),
-              //   ),
-              //   child: Center(
-              //     child: Text(
-              //       "Sign Up",
-              //       style: TextStyle(
-              //         fontSize: 20,
-              //         fontWeight: FontWeight.bold,
-              //         color: Colors.white,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
               SizedBox(height: w * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -407,74 +532,37 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ],
               ),
-              // RichText(
-              //     text: TextSpan(
-              //         text: "Have an account? ",
-              //         style: TextStyle(color: Colors.grey[500], fontSize: 15),
-              //         children: [
-              //       TextSpan(
-              //         text: "Sign in",
-              //         style: TextStyle(
-              //             color: Colors.black,
-              //             fontSize: 15,
-              //             fontWeight: FontWeight.bold),
-              //         recognizer: TapGestureRecognizer()
-              //           ..onTap = () => Get.to(() => LoginPage()),
-              //       )
-              //     ])),
+
               SizedBox(height: w * 0.02),
-              // Wrap(
-              //   children: List<Widget>.generate(3, (index) {
-              //     return Padding(
-              //       padding: const EdgeInsets.all(10.0),
-              //       child: CircleAvatar(
-              //         radius: 20,
-              //         backgroundColor: Colors.grey[500],
-              //         child: CircleAvatar(
-              //           radius: 30,
-              //           backgroundImage: AssetImage("img/" + images[index]),
-              //         ),
-              //       ),
-              //     );
-              //   }),
-              // )
             ],
           ),
         ));
   }
 
-  // void loginWithPhone() async {
-  //   auth.verifyPhoneNumber(
-  //     phoneNumber: "+62" + _phoneController.text,
-  //     verificationCompleted: (PhoneAuthCredential credential) async {
-  //       await auth.signInWithCredential(credential).then((value) {
-  //         print("You are logged in successfully");
-  //       });
-  //     },
-  //     verificationFailed: (FirebaseAuthException e) {
-  //       print(e.message);
-  //     },
-  //     codeSent: (String verificationId, int? resendToken) {
-  //       verificationID = verificationId;
-  //       setState(() {});
-  //     },
-  //     codeAutoRetrievalTimeout: (String verificationId) {},
-  //   );
-  // }
-
   void _signUp() async {
-    // String nik = _nikController.text;
-    // String name = _nameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
+    String level = _levelController.text
+        .toLowerCase(); // Ambil nilai level dan konversi ke huruf kecil
 
-    User? user = await _auth.signUpWithEmailAndPassword(email, password);
+    if (level == 'admin' || level == 'member') {
+      User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
-    if (user != null) {
-      print("User is successfully created");
-      Navigator.pushNamed(context, "/otpform");
+      if (user != null) {
+        print("User is successfully created");
+        // Anda dapat menyimpan nilai level ke database atau melakukan sesuatu sesuai kebutuhan di sini
+        // Misalnya, jika Anda memiliki kolom "level" di database, simpan nilai level ke sana.
+        // Selanjutnya, Anda dapat menggunakannya untuk mengelompokkan pengguna atau memberi izin akses sesuai level.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SettingsPage()),
+        );
+      } else {
+        print("Some error happened");
+      }
     } else {
-      print("Some error happend");
+      // Jika level yang dimasukkan tidak valid (bukan "admin" atau "member")
+      print("Invalid level. Please enter 'admin' or 'member'.");
     }
   }
 }

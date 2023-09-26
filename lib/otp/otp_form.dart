@@ -1,16 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_login/page/home_page.dart';
-// import 'package:firebase_login/page/list_page.dart';
-// import 'package:firebase_login/page/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginScreen extends StatefulWidget {
+class OTPForm extends StatefulWidget {
+  final String telepon;
+
+  OTPForm({required this.telepon});
+
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _OTPFormState createState() => _OTPFormState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _OTPFormState extends State<OTPForm> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController otpController = TextEditingController();
 
@@ -20,13 +21,19 @@ class _LoginScreenState extends State<LoginScreen> {
   String verificationID = "";
 
   @override
+  void initState() {
+    super.initState();
+    // Isi nilai phoneController dengan nilai dari _teleponController
+    phoneController.text = widget.telepon;
+  }
+
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Verfiy Account",
+          "Verify Account",
           style: TextStyle(
             fontSize: 20,
           ),
@@ -101,11 +108,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   loginWithPhone();
                 }
               },
-              //   FirebaseAuth.instance.checkActionCode(
-              //       _emailController.text.trim(),
-              //       _nikController.text.trim(),
-              //       _passwordController.text.trim());
-              // },
               child: Container(
                 width: w * 0.3,
                 height: h * 0.06,
@@ -136,8 +138,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void loginWithPhone() async {
+    String phoneNumber = "+62" + phoneController.text;
     auth.verifyPhoneNumber(
-      phoneNumber: "+62" + phoneController.text,
+      phoneNumber: phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {
         await auth.signInWithCredential(credential).then((value) {
           print("You are logged in successfully");

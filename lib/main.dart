@@ -1,14 +1,15 @@
+import 'package:cdc_app/admin/admin_home.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_login/page/home_page.dart';
-import 'package:firebase_login/page/list_page.dart';
-import 'package:firebase_login/otp/otp_form.dart';
+import 'package:cdc_app/page/home_page.dart';
+import 'package:cdc_app/page/list_page.dart';
+import 'package:cdc_app/otp/otp_form.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_login/auth_controller.dart';
-import 'package:firebase_login/page/splash_screen.dart';
-import 'package:firebase_login/page/welcome_page.dart';
-import 'package:firebase_login/users/login_page.dart';
-import 'package:firebase_login/users/signup_page.dart';
+// import 'package:cdc_app/auth_controller.dart';
+import 'package:cdc_app/page/splash_screen.dart';
+import 'package:cdc_app/page/welcome_page.dart';
+import 'package:cdc_app/users/login_page.dart';
+import 'package:cdc_app/users/signup_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,17 +43,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signUp': (context) => SignUpPage(),
         '/welcome': (context) => WelcomePage(),
-        '/home': (context) => MyHomePage(
-              onProfileImageChanged: (newImage) {
-                // Callback ini akan dipanggil saat gambar profil diubah di ProfilePage
-                // Anda dapat memperbarui editedFotoProfil dengan gambar yang baru
-                if (newImage != null) {
-                  // Tambahkan logika untuk mengubah gambar profil di sini jika diperlukan
-                }
-              },
-            ),
+        '/home': (context) => MyHomePage(),
         '/list': (context) => ListPage(),
-        '/otpform': (context) => LoginScreen(),
+        '/admin': (context) => AdminPage(),
       },
     );
   }

@@ -1,9 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_login/users/reset_password.dart';
+import 'package:cdc_app/users/reset_password.dart';
+import 'package:cdc_app/page/home_page.dart';
+import 'dart:convert';
+import 'package:cdc_app/admin/admin_home.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_login/control/auth_controller.dart';
-import 'package:firebase_login/users/signup_page.dart';
+import 'package:cdc_app/control/auth_controller.dart';
+import 'package:cdc_app/users/signup_page.dart';
+import 'package:http/http.dart ' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,13 +21,54 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _nikController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
   bool _obscureText = true;
-  @override
+
   void dispose() {
     _nikController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void _signInAndLogin() {
+    _signIn();
+    _login();
+  }
+
+  Future<void> _login() async {
+    final Uri url = Uri.parse("http://10.10.2.245/cdc/login.php");
+    final response = await http.post(
+      url,
+      body: {
+        "email": _emailController.text,
+        "password": _passwordController.text,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // Jika permintaan berhasil, respons dapat diakses di sini
+      print("Response: ${response.body}");
+
+      // Parse respons JSON dari server
+      final datauser = json.decode(response.body);
+
+      if (datauser.isNotEmpty) {
+        if (datauser[0]['level'] == 'admin') {
+          Navigator.pushReplacementNamed(context, '/admin');
+        } else if (datauser[0]['level'] == 'member') {
+          Navigator.pushReplacementNamed(context, '/home');
+        } else {
+          // Handle kasus lain jika diperlukan
+        }
+      } else {
+        // Handle jika respons kosong atau tidak sesuai format yang diharapkan
+      }
+    } else {
+      // Jika terjadi kesalahan dalam permintaan HTTP
+      print("Error: ${response.statusCode}");
+      throw Exception("Failed to login");
+    }
   }
 
   @override
@@ -145,34 +190,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           SizedBox(
-            height: 70,
+            height: 50,
           ),
           GestureDetector(
-            onTap: (_signIn),
-            //   try {
-            //     // Perform Firebase sign-in with email and password.
-            //     await FirebaseAuth.instance.signInWithEmailAndPassword(
-            //       email:
-            //           "zhaqianroufa@gmail.com", // Replace with the actual email.
-            //       password: "123456", // Replace with the actual password.
-            //     );
-
-            //     // If sign-in is successful, navigate to WelcomePage.
-            //     Navigator.pushReplacement(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => WelcomePage(),
-            //         ));
-            //   } catch (e) {
-            //     ScaffoldMessenger.of(context).showSnackBar(
-            //       SnackBar(
-            //         backgroundColor: Colors.redAccent,
-            //         content: Text('Sign-in error: $e'),
-            //         duration: Duration(seconds: 3), // Durasi tampilan pesan
-            //       ),
-            //     );
-            //   }
-            // },
+            onTap: () => _signInAndLogin(),
             child: Container(
               width: w * 0.5,
               height: h * 0.08,
@@ -195,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          SizedBox(height: w * 0.03),
+          SizedBox(height: w * 0.04),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -223,24 +244,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
-          // RichText(
-          //   text: TextSpan(
-          //     text: "Don't have an account? ",
-          //     style: TextStyle(color: Colors.grey[500], fontSize: 15),
-          //     children: [
-          //       TextSpan(
-          //         text: "Create Account",
-          //         style: TextStyle(
-          //           color: Colors.black,
-          //           fontSize: 15,
-          //           fontWeight: FontWeight.bold,
-          //         ),
-          //         recognizer: TapGestureRecognizer()
-          //           ..onTap = () => Get.to(() => SignUpPage()),
-          //       ),
-          //     ],
-          //   ),
-          // )
         ],
       ),
     );
@@ -265,7 +268,6 @@ class _LoginPageState extends State<LoginPage> {
     User? user = await _auth.signInWithEmailAndPassword(email, password);
 
     if (user != null) {
-      // Jika berhasil, tampilkan SnackBar dengan warna hijau
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Successfully Signin"),
@@ -274,7 +276,6 @@ class _LoginPageState extends State<LoginPage> {
       );
       Navigator.pushNamed(context, "/home");
     } else {
-      // Jika gagal, tampilkan SnackBar dengan warna merah
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Email or Password Incorrect"),

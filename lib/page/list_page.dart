@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cdc_app/page/home_page.dart';
 
 class ListPage extends StatelessWidget {
   final List<Alumni> alumniList = [
@@ -23,8 +24,12 @@ class ListPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              // Navigasi kembali ke halaman login
-              Navigator.pushReplacementNamed(context, '/home');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyHomePage(),
+                  ));
+              // Implement logic for logout here
             },
           ),
         ],
