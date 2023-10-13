@@ -27,7 +27,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Future _getdata() async {
     try {
       final response =
-          await http.get(Uri.parse('http://10.10.2.245/cdc/read_profil.php'));
+          await http.get(Uri.parse('http://10.10.2.81/cdc/read_profil.php'));
 
       if (response.statusCode == 200) {
         print(response.body);
@@ -92,7 +92,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               return Column(
                 children: [
                   Text(
-                    "Edit Profile",
+                    "Edit Profil",
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(
@@ -161,7 +161,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         // Ganti dengan controller yang sesuai
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          labelText: 'Full Name',
+                          labelText: 'Nama Lengkap',
                           // hintText: 'Your Name',
                         )
                         // TextEditingController(text: _listdata['ufullname'] ?? ''),
@@ -182,7 +182,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       // controller: _emailController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        labelText: 'Place and Date of Birth',
+                        labelText: 'Tempat dan Tanggal Lahir',
                         // hintText: 'Enter your email',
                       ),
                     ),
@@ -222,7 +222,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           text: _listdata[index]['ualamat'] ?? ''),
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        labelText: 'Addres',
+                        labelText: 'Alamat',
                         // hintText: 'Enter your email',
                       ),
                     ),
@@ -261,7 +261,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       decoration: InputDecoration(
                         prefixText: '+62 ',
                         border: InputBorder.none,
-                        labelText: 'Phone Number',
+                        labelText: 'Nomer Telepon',
                         // hintText: 'Enter your email',
                       ),
                     ),
@@ -269,28 +269,28 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   SizedBox(
                     height: 15,
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey[400]!),
-                    ),
-                    child: TextField(
-                      controller: TextEditingController(
-                          text: _listdata[index]['upassword'] ?? ''),
-                      obscureText: _obscureText,
-                      decoration: InputDecoration(
-                        suffixIcon: togglePassword(),
-                        border: InputBorder.none,
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: 15),
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     border: Border.all(color: Colors.grey[400]!),
+                  //   ),
+                  //   child: TextField(
+                  //     controller: TextEditingController(
+                  //         text: _listdata[index]['upassword'] ?? ''),
+                  //     obscureText: _obscureText,
+                  //     decoration: InputDecoration(
+                  //       suffixIcon: togglePassword(),
+                  //       border: InputBorder.none,
 
-                        labelText: 'Password',
-                        // hintText: 'Enter your email',
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  //       labelText: 'Kata Sandi',
+                  //       // hintText: 'Enter your email',
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 15,
+                  // ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(
@@ -327,7 +327,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ),
                         onPressed: () {},
                         child: Text(
-                          "CANCEL",
+                          "BATAL",
                           style: TextStyle(
                             fontSize: 14,
                             letterSpacing: 2.2,
@@ -346,7 +346,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         child: Text(
-                          "SAVE",
+                          "SIMPAN",
                           style: TextStyle(
                             fontSize: 14,
                             letterSpacing: 2.2,

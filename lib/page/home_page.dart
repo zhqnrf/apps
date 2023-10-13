@@ -82,14 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
                   title: Text(
-                    'Hello !',
+                    'Hello Name!',
                     style: Theme.of(context)
                         .textTheme
                         .headline6
                         ?.copyWith(color: Colors.white),
                   ),
                   subtitle: Text(
-                    'Find your journey',
+                    'Temukan Ceritamu',
                     style: Theme.of(context)
                         .textTheme
                         .subtitle1
@@ -141,16 +141,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemDashboard(
                       'Informasi', CupertinoIcons.info_circle, Colors.indigo),
                   itemDashboard(
-                      'Tracks', CupertinoIcons.graph_circle, Colors.green),
-                  itemDashboard('List', CupertinoIcons.person_2, Colors.purple),
+                      'Kuesioner', CupertinoIcons.graph_circle, Colors.green),
                   itemDashboard(
-                      'Activities', CupertinoIcons.graph_square, Colors.brown),
+                      'Alumni', CupertinoIcons.person_2, Colors.purple),
                   itemDashboard(
-                      'Upload', CupertinoIcons.add_circled, Colors.teal),
+                      'Chat', CupertinoIcons.chat_bubble, Colors.brown),
                   itemDashboard(
-                      'About', CupertinoIcons.question_circle, Colors.blue),
+                      'Sharing', CupertinoIcons.pencil_outline, Colors.teal),
                   itemDashboard(
-                      'Contact', CupertinoIcons.phone, Colors.pinkAccent),
+                      'Tentang', CupertinoIcons.question_circle, Colors.blue),
+                  // itemDashboard(
+                  //     'Contact', CupertinoIcons.phone, Colors.pinkAccent),
                 ],
               ),
             ),

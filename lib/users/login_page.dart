@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _login() async {
-    final Uri url = Uri.parse("http://10.10.2.245/cdc/login.php");
+    final Uri url = Uri.parse("http://10.10.2.81/cdc/login.php");
     final response = await http.post(
       url,
       body: {
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: ListView(
         children: [
           Container(
             width: w,
@@ -94,12 +94,12 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Hello",
+                  "CDC",
                   style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "Sign into your Account",
-                  style: TextStyle(fontSize: 10, color: Colors.grey[500]),
+                  "Masuk ke akun Anda",
+                  style: TextStyle(fontSize: 15, color: Colors.grey[500]),
                 ),
                 SizedBox(
                   height: 20,
@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: _emailController,
                       decoration: InputDecoration(
-                          hintText: "Your email",
+                          hintText: "Email Anda",
                           prefixIcon:
                               Icon(Icons.email, color: Colors.blueAccent),
                           focusedBorder: OutlineInputBorder(
@@ -150,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: _obscureText,
                       controller: _passwordController,
                       decoration: InputDecoration(
-                          hintText: "Password",
+                          hintText: "Kata Sandi",
                           prefixIcon: Icon(Icons.password_outlined,
                               color: Colors.blueAccent),
                           suffixIcon: togglePassword(),
@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     TextButton(
                       child: Text(
-                        'Forgot Password?',
+                        'Lupa Kata Sandi?',
                         style: TextStyle(
                           color: Colors
                               .grey[400], // Ubah warna teks menjadi abu-abu
@@ -206,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: Center(
                 child: Text(
-                  "Sign In",
+                  "Masuk",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -221,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Dont have an account?",
+                "Belum mempunyai akun? ",
                 style: TextStyle(color: Colors.grey[500], fontSize: 15),
               ),
               InkWell(
@@ -234,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 },
                 child: Text(
-                  "  Sign Up",
+                  "Daftar",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,

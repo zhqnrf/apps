@@ -33,7 +33,7 @@ class _OTPFormState extends State<OTPForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Verify Account",
+          "Verifikasi Akun",
           style: TextStyle(
             fontSize: 20,
           ),
@@ -49,7 +49,7 @@ class _OTPFormState extends State<OTPForm> {
             TextField(
               controller: phoneController,
               decoration: InputDecoration(
-                hintText: "Your Phone",
+                hintText: "Nomor Telepon",
                 prefixIcon: Icon(Icons.phone, color: Colors.blueAccent),
                 prefixText: '+62 ',
                 focusedBorder: OutlineInputBorder(
@@ -120,7 +120,7 @@ class _OTPFormState extends State<OTPForm> {
                 ),
                 child: Center(
                   child: Text(
-                    "Verify",
+                    "Verifikasi",
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,

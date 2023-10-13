@@ -16,7 +16,7 @@ class _ReadPageState extends State<ReadPage> {
   Future<void> _getData() async {
     try {
       final response =
-          await http.get(Uri.parse('http://10.10.2.245/cdc/read_profil.php'));
+          await http.get(Uri.parse('http://10.10.2.81/cdc/read_profil.php'));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);

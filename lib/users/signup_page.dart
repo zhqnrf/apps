@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
         _levelController != " " ||
         _passwordController.text != "") {
       try {
-        String uri = "http://10.10.2.245/cdc/insert_register.php";
+        String uri = "http://10.10.2.81/cdc/insert_register.php";
         var res = await http.post(Uri.parse(uri), body: {
           "fullname": _fullnameController.text,
           "ttl": _ttlController.text,
@@ -129,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        "Register",
+                        "Daftar",
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
                       ),
@@ -137,8 +137,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 2,
                       ),
                       Text(
-                        "Make your new Account",
-                        style: TextStyle(fontSize: 10, color: Colors.grey[500]),
+                        "Buat akun Baru",
+                        style: TextStyle(fontSize: 15, color: Colors.grey[500]),
                       )
                     ],
                   )),
@@ -173,7 +173,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: TextField(
                           controller: _fullnameController,
                           decoration: InputDecoration(
-                              hintText: "Your Name",
+                              hintText: "Nama Anda",
                               prefixIcon: Icon(Icons.perm_identity,
                                   color: Colors.blueAccent),
                               focusedBorder: OutlineInputBorder(
@@ -204,7 +204,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: TextField(
                           controller: _ttlController,
                           decoration: InputDecoration(
-                              hintText: "Place and Date Birth",
+                              hintText: "Tempat dan Tanggal Lahir",
                               prefixIcon: Icon(Icons.date_range_rounded,
                                   color: Colors.blueAccent),
                               focusedBorder: OutlineInputBorder(
@@ -270,7 +270,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: TextField(
                     controller: _alamatController,
                     decoration: InputDecoration(
-                        hintText: "Your Place",
+                        hintText: "Alamat ",
                         prefixIcon: Icon(Icons.place, color: Colors.blueAccent),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -301,7 +301,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: TextField(
                     controller: _emailController,
                     decoration: InputDecoration(
-                        hintText: "Your Email",
+                        hintText: "Email",
                         prefixIcon: Icon(Icons.email, color: Colors.blueAccent),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -371,7 +371,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: TextField(
                     controller: _teleponController,
                     decoration: InputDecoration(
-                        hintText: "Your Telepon",
+                        hintText: "Nomor Telepon",
                         prefixIcon: Icon(Icons.phone, color: Colors.blueAccent),
                         prefixText: '+62 ',
                         focusedBorder: OutlineInputBorder(
@@ -404,7 +404,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                        hintText: "Password",
+                        hintText: "Kata Sandi",
                         prefixIcon: Icon(Icons.password_rounded,
                             color: Colors.blueAccent),
                         focusedBorder: OutlineInputBorder(
@@ -423,40 +423,40 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 15,
               ),
 
-              Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 10,
-                      spreadRadius: 7,
-                      offset: Offset(1, 1),
-                      color: Colors.grey.withOpacity(0.2),
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  controller: _levelController,
-                  decoration: InputDecoration(
-                    hintText: "Level",
-                    prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.white, width: 1.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.white, width: 1.0),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              //   FirebaseAuth.instance.checkActionCode(
+              // Container(
+              //   margin: const EdgeInsets.only(left: 20, right: 20),
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.circular(30),
+              //     boxShadow: [
+              //       BoxShadow(
+              //         blurRadius: 10,
+              //         spreadRadius: 7,
+              //         offset: Offset(1, 1),
+              //         color: Colors.grey.withOpacity(0.2),
+              //       ),
+              //     ],
+              //   ),
+              //   child: TextField(
+              //     controller: _levelController,
+              //     decoration: InputDecoration(
+              //       hintText: "Level",
+              //       prefixIcon: Icon(Icons.person, color: Colors.blueAccent),
+              //       focusedBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //         borderSide: BorderSide(color: Colors.white, width: 1.0),
+              //       ),
+              //       enabledBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //         borderSide: BorderSide(color: Colors.white, width: 1.0),
+              //       ),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(30),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // //   FirebaseAuth.instance.checkActionCode(
               //       _emailController.text.trim(),
               //       _nikController.text.trim(),
               //       _passwordController.text.trim());
@@ -493,7 +493,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   child: Center(
                     child: Text(
-                      "Sign Up",
+                      "Daftar",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -509,7 +509,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Have an account?",
+                    "Sudah Punya Akun? ",
                     style: TextStyle(color: Colors.grey[500], fontSize: 15),
                   ),
                   InkWell(
@@ -522,7 +522,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       );
                     },
                     child: Text(
-                      "  Sign In",
+                      "Masuk",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -533,7 +533,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
 
-              SizedBox(height: w * 0.02),
+              SizedBox(height: 22),
             ],
           ),
         ));

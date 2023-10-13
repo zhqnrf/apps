@@ -79,14 +79,14 @@ class WelcomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "I'll Go Out",
+                  "Anda akan keluar",
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.black54),
                 ),
                 Text(
-                  "Are you sure?",
+                  "Apakah anda yakin?",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.grey[500],
@@ -115,7 +115,7 @@ class WelcomePage extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "Sign Out",
+                  "Keluar",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

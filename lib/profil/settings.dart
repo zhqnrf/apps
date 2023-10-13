@@ -33,7 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
         child: ListView(
           children: [
             Text(
-              "Settings",
+              "Pengaturan",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -49,7 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   width: 8,
                 ),
                 Text(
-                  "Account",
+                  "Akun",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -61,10 +61,10 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            buildAccountOptionRow(context, "Profil Settings"),
-            buildAccountOptionRow(context, "Change Password"),
-            buildAccountOptionRow(context, "Content Settings"),
-            buildAccountOptionRow(context, "Social"),
+            buildAccountOptionRow(context, "Pengaturan Profil"),
+            buildAccountOptionRow(context, "Ubah Kata Sandi"),
+            buildAccountOptionRow(context, "Tambah Pendidikan"),
+            buildAccountOptionRow(context, "Tambah Pekerjaan"),
             buildAccountOptionRow(context, "Privacy and security"),
             SizedBox(
               height: 40,
@@ -79,7 +79,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   width: 8,
                 ),
                 Text(
-                  "Notifications",
+                  "Notifikasi",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -91,9 +91,9 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            buildNotificationOptionRow("New for you", true),
-            buildNotificationOptionRow("Account activity", true),
-            buildNotificationOptionRow("Opportunity", false),
+            buildNotificationOptionRow("Berita Terbaru", true),
+            buildNotificationOptionRow("Aktivitas Akun", true),
+
             SizedBox(
               height: 50,
             ),
@@ -221,7 +221,7 @@ class _SettingsPageState extends State<SettingsPage> {
   GestureDetector buildAccountOptionRow(BuildContext context, String title) {
     return GestureDetector(
       onTap: () {
-        if (title == "Profil Settings") {
+        if (title == "Pengaturan Profil") {
           // Hanya untuk "Profil Settings"
           Navigator.push(
             context,

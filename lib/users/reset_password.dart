@@ -55,7 +55,7 @@ class _ResetScreenState extends State<ResetScreen> {
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
-                hintText: 'Enter your email',
+                hintText: 'Masukkan Email Anda',
               ),
             ),
             SizedBox(height: 20),
@@ -77,7 +77,7 @@ class _ResetScreenState extends State<ResetScreen> {
                   elevation: 0, // Menghilangkan bayangan
                 ),
                 child: Text(
-                  "Verify",
+                  "Verifikasi",
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
